@@ -1,0 +1,10 @@
+{
+	"mysql" : {
+		"username": "root",
+    	"password": "",
+    	"server": "localhost",
+    	"database": "database_name",
+    	"dialect": "mysql"
+	},
+	"jwtTokenSecret": "jwtSecretEx"
+}
