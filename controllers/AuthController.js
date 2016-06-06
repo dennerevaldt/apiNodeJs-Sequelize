@@ -1,11 +1,10 @@
 var debug   = require('debug')('api:controller:auth');
 var jwt     = require('jwt-simple'),
     moment  = require('moment'),
-    config  = require('config'),
-    Promise = require('bluebird');
+    config  = require('config');
 
 function AuthController(UserModel) {
-    this.model = Promise.promisifyAll(UserModel);
+    this.model = UserModel;
 }
 
 AuthController.prototype.middlewareAuth = function(request, response, next) {
@@ -24,7 +23,6 @@ AuthController.prototype.middlewareAuth = function(request, response, next) {
 	        return next(err);
 	    } else {
 	        request.user = decoded.user;
-	        console.log(request.user);
 	        next();
 	    }
   	} catch(err) {
@@ -36,7 +34,7 @@ AuthController.prototype.token = function(request, response, next) {
     var username = request.body.username;
     var password = request.body.password;
 
-    this.model.findAsync(request.body)
+    this.model.find(request.body)
           .then(function(data) {
               	if (data.length) {
                   	var expires = moment().add(7, 'days').valueOf();

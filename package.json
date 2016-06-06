@@ -1,5 +1,5 @@
 {
-  "name": "API NodeJS + sequelize",
+  "name": "apinodejs-sequelize",
   "version": "1.0.0",
   "description": "API utilizando sequelize",
   "main": "./bin/www",
